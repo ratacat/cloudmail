@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+.dev.vars
+.dev.vars.key
+worker-configuration.d.ts
+worker/wrangler.prod.jsonc
+.eyes/
+.workflow/
+*.log

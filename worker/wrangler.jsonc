@@ -1,0 +1,22 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "cloudmail",
+  "main": "index.ts",
+  "compatibility_date": "2026-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  // `cloudmail init` (or manual edit) fills the route + d1 id for your account.
+  // "routes": [{ "pattern": "mail.YOURDOMAIN.tld", "custom_domain": true }],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cloudmail",
+      "database_id": "REPLACE_WITH_YOUR_D1_ID"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  }
+}

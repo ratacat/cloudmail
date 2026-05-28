@@ -1,0 +1,27 @@
+{
+  "name": "cloudmail",
+  "version": "0.1.0",
+  "description": "Robot-mode CLI for disposable email identities on any Cloudflare account.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "cloudmail": "bin/cloudmail.ts"
+  },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "cli": "bun run bin/cloudmail.ts",
+    "worker:dev": "cd worker && wrangler dev",
+    "worker:deploy": "cd worker && wrangler deploy",
+    "worker:tail": "cd worker && wrangler tail"
+  },
+  "dependencies": {
+    "postal-mime": "^2.4.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250129.0",
+    "@types/bun": "1.3.14",
+    "typescript": "5.9.3",
+    "wrangler": "^4.95.0"
+  }
+}

@@ -12,7 +12,15 @@ export interface ParsedArgs {
 }
 
 /** Flags that never take a value — their presence means `true`. */
-const BOOLEAN_FLAGS = new Set(["json", "human", "full", "quiet", "help"]);
+const BOOLEAN_FLAGS = new Set([
+  "json",
+  "human",
+  "full",
+  "quiet",
+  "help",
+  "unread", // list: only unread mail
+  "active", // config set: make the saved profile active
+]);
 
 /** Short-flag aliases mapped to their long names. */
 const SHORT_ALIASES: Record<string, string> = {

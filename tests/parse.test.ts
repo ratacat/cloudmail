@@ -2,6 +2,21 @@ import { test, expect, describe } from "bun:test";
 import { parseArgs } from "../src/cli/parse";
 import { CloudmailError, ErrorCode } from "../src/contracts/errors";
 
+describe("parseArgs — boolean flags unread/active", () => {
+  test("--unread is boolean true at end of argv", () => {
+    expect(parseArgs(["list", "--unread"]).flags["unread"]).toBe(true);
+  });
+  test("--active is boolean true even when followed by another flag", () => {
+    const a = parseArgs(["config", "set", "p", "--api-key", "k", "--active", "--json"]);
+    expect(a.flags["active"]).toBe(true);
+    expect(a.json).toBe(true);
+    expect(a.flags["api-key"]).toBe("k");
+  });
+  test("a boolean flag rejects an = value", () => {
+    expect(() => parseArgs(["list", "--unread=1"])).toThrow();
+  });
+});
+
 describe("parseArgs — command + positionals", () => {
   test("first positional becomes command", () => {
     const p = parseArgs(["latest"]);
